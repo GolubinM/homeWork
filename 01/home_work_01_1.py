@@ -1,0 +1,36 @@
+result_tag = "-------------------------------------------------------------"
+end_tag = "============================================================="
+print("Введение в Python. Часть 2")
+print("Задание 1. Сумма и произведение чисел")
+num1 = float(input("Введите первое число: "))
+num2 = float(input("Введите второе число: "))
+num3 = float(input("Введите третье число: "))
+print(result_tag)
+print(f"Сумма чисел: {num1+num2+num3}")
+print(f"Произведение чисел: {num1*num2*num3}")
+print(end_tag)
+
+print("\nЗадание 2. Сумма после всех выплат.")
+num1 = float(input("Введите первое число - зарплата за месяц: "))
+num2 = float(input("Введите второе число - сумма месячного платежа по кредиту в банке: "))
+num3 = float(input("Введите третье число - задолженность за коммунальные услуги: "))
+print(result_tag)
+print(f"Сумма, которая останется после всех выплат: {num1-num2-num3}")
+print(end_tag)
+
+print("\nЗадание 3. Площадь ромба")
+num1 = float(input("Введите длину первой диагонали ромба: "))
+num2 = float(input("Введите длину второй диагонали ромба: "))
+print(result_tag)
+print(f"Площадь ромба равна: {num1*num2/2}")
+print(end_tag)
+
+print("\nЗадание 4. Цитата.")
+print(result_tag)
+print("To be\nor not\nto be")
+print(end_tag)
+
+print("Задание 5. Цитата.")
+print(result_tag)
+print("\"Life is what happens\n\t when\n"+2*"\t", "you're busy making other plans\"\n"+9*"\t"+"John Lennon.")
+print(end_tag)
