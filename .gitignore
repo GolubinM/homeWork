@@ -1,1 +1,6 @@
 /.idea
+pre*
+*.pdf
+*.xls*
+*.txt
+#Home*[a-z].py
