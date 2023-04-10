@@ -1,1 +1,5 @@
 /.idea
+pre*
+*.pdf
+*.xls*
+*.txt
