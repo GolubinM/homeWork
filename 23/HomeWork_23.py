@@ -50,3 +50,40 @@ d_car.width = 2600  # не позволяет установить значен�
 print(d_car, d_car.__dict__)
 cars.append(d_car)
 for car in cars: car.print_info()
+
+print('\n\nЗадание 2. Реализуйте класс «Книга».')
+
+
+class Book:
+    def __init__(self, name, author, year):
+        self.name = name
+        self.author = author
+        self.year = year
+        self.publisher = None
+        self.genre = None
+
+    def set_info(self):
+        self.name = input("Введите название: ")
+        self.author = input("Введите автора: ")
+        self.year = input("Введите год издания: ")
+        self.publisher = input("Введите издателя: ")
+        self.genre = input("Введите жанр: ")
+
+    def print_info(self):
+        print(f'Книга: {self.name}\n\t'
+              f'автор: {self.author}\n\t'
+              f'год издания: {self.year}\n\t'
+              f'издательство: {self.publisher}\n\t'
+              f'жанр: {self.genre};')
+
+
+a_book = Book('АРХИТЕКТУРА ЭВМ', 'Жмакин А.П.', 2010)
+b_book = Book('Мини-ЭВМ. Организация и программирование', 'Экхауз Р., Моррис Л.', 1983)
+c_book = Book('PDP-11. Архитектура и программирование', 'Фрэнк Томас', 1986)
+c_book.publisher = 'Радио и связь'
+a_book.genre = "компьютерная литература"
+b_book.genre = "компьютерная литература"
+c_book.genre = "компьютерная литература"
+a_book.print_info()
+b_book.print_info()
+c_book.print_info()
