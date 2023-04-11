@@ -87,3 +87,28 @@ c_book.genre = "компьютерная литература"
 a_book.print_info()
 b_book.print_info()
 c_book.print_info()
+
+print('\n\nЗадание 3. Реализуйте класс «Стадион».')
+
+
+class Stadium:
+    def __init__(self, name, city):
+        self.name = name
+        self.city = city
+        self.country = None
+        self.year = None
+        self.capacity = None
+
+    def set_info(self):
+        self.name = input("Введите название: ")
+        self.city = input("Введите город: ")
+        self.country = input("Введите страну: ")
+        self.year = input("Введите год открытия: ")
+        self.capacity = input("Введите вместимость: ")
+
+    def print_info(self):
+        print(f'Стадион: {self.name}\n\t'
+              f'город: {self.city}\n\t'
+              f'страна: {self.country}\n\t'
+              f'год открытия: {self.year}\n\t'
+              f'вместимость: {self.capacity};')
