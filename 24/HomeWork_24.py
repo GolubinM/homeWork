@@ -151,3 +151,24 @@ print(fract_1)
 print(Fraction.count)
 
 # =============================================================================
+
+print("\n==температура из Цельсия в Фаренгейт и наоборот==============================")
+
+
+class TemperatureConversion():
+    count = 0
+
+    @staticmethod
+    def celcius_to_fahrenheit(value):
+        TemperatureConversion.count += 1
+        return round(value * 1.8 + 32, 1)
+
+    @staticmethod
+    def fahrenheit_to_celcius(value):
+        TemperatureConversion.count += 1
+        return round((value - 32) / 1.8, 1)
+
+
+print(TemperatureConversion.celcius_to_fahrenheit(36.6))
+print(TemperatureConversion.fahrenheit_to_celcius(32))
+print(TemperatureConversion.count)
