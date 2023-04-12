@@ -28,6 +28,15 @@ class Car:
     def __setattr__(self, key, value):
         if key in self.VALID_KEYS and value != "":
             self.__dict__[key] = value
+        elif key == "model":
+            self.__dict__[key] = "Undefined model"
+        elif key not in self.VALID_KEYS:
+            raise AttributeError("Недопустимый атрибут")
+        else:
+            raise ValueError("Значение не должно быть пустым")
+
+    def __repr__(self):
+        return f"{self.model}, {self.year}, {self.car_color}"
 
 
 colors = ("Black", "White", "Grey")
@@ -39,22 +48,27 @@ c_car = Car("Toyota Camry")
 cars = [a_car, b_car, c_car]
 for car in cars: print(car.model)
 for car, color, volume in zip(cars, colors, volumes): car.car_color = color; car.engine_volume = volume
-d_car = Car("")  # Создает экземпляр Car, но не позволяет установить пустое значение полю 'model'
+d_car = Car("")  # Создает экземпляр Car, вместо пустого значения полю 'model' устанавливает значение "Undefined model"
 print(d_car, d_car.__dict__)
 d_car.model = "BMW 115i"
 d_car.car_color = "white"
 d_car.year = "2018"
 d_car.engine_volume = "1600"
 d_car.automaker = "BMW"
-d_car.width = 2600  # не позволяет установить значение атрибута, не определенного в 'VALID_KEYS'
+try:
+    d_car.width = 2600  # не позволяет установить значение атрибута, не определенного в 'VALID_KEYS'
+except AttributeError as ex:
+    print('\u001b[38;5;001m' + ex.__repr__() + '\033[0m')
 print(d_car, d_car.__dict__)
 cars.append(d_car)
 for car in cars: car.print_info()
-
+# ==============================================================================
 print('\n\nЗадание 2. Реализуйте класс «Книга».')
 
 
 class Book:
+    __slots__ = ("name", "author", "year", "publisher", "genre")
+
     def __init__(self, name, author, year):
         self.name = name
         self.author = author
@@ -76,6 +90,9 @@ class Book:
               f'издательство: {self.publisher}\n\t'
               f'жанр: {self.genre};')
 
+    def __repr__(self):
+        return f"{self.name}, {self.author}, {self.year}"
+
 
 a_book = Book('АРХИТЕКТУРА ЭВМ', 'Жмакин А.П.', 2010)
 b_book = Book('Мини-ЭВМ. Организация и программирование', 'Экхауз Р., Моррис Л.', 1983)
@@ -87,7 +104,13 @@ c_book.genre = "компьютерная литература"
 a_book.print_info()
 b_book.print_info()
 c_book.print_info()
+d_book = Book("Тимофей и фея", None, None)
+d_book.genre = "стихи"
+# d_book.pages = "100" # __slots__ не позволит определить данный атрибут, поднимет AttributeError:
+# print(d_book, d_book.__dict__)
+print(d_book, f"Допустимые атрибуты: {d_book.__slots__}", sep="; ")  # __slots__ не позволит вызвать метод __dict__
 
+# ==============================================================================
 print('\n\nЗадание 3. Реализуйте класс «Стадион».')
 
 
