@@ -1,10 +1,12 @@
 # ==Создать класс дробь=======================================================
 class Fraction:
     __slots__ = ("_numerator", "_denominator")
+    count = 0
 
     def __init__(self, numerator, denominator):
         self.numerator = numerator
         self.denominator = denominator
+        self.instance_count()
 
     @property
     def numerator(self):
@@ -104,6 +106,10 @@ class Fraction:
     def __repr__(self):
         return f"{self.numerator}/{self.denominator}"
 
+    @staticmethod
+    def instance_count():
+        Fraction.count += 1
+
 
 print('сложение')
 fract_1 = Fraction(1, 5) + Fraction(2, 3)
@@ -138,4 +144,10 @@ print(fract_1.numerator, fract_1.denominator, fract_1.__repr__(), fract_1.__str_
 # ввод данных
 fract_1.denominator = 1075
 print(fract_1)
+# ==Добавить счетчик экземпляров===============================================
+#     @staticmethod
+#     def instance_count():
+#         Fraction.count += 1
+print(Fraction.count)
+
 # =============================================================================
