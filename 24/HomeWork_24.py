@@ -181,179 +181,150 @@ class EmpireUnitConverter:
     accuracy = 3
 
     @staticmethod
-    def inch_to_mm(value, accuracy=accuracy):
+    def __convert(value, factor, accuracy=accuracy):
         EmpireUnitConverter.count += 1
-        return round(value * 25.4, accuracy)
+        return round(value * factor, accuracy)
+
+    @staticmethod
+    def inch_to_mm(value, accuracy=accuracy):
+        return EmpireUnitConverter.__convert(value, 25.4, accuracy)
 
     @staticmethod
     def inch_to_cm(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 2.54, accuracy)
+        return EmpireUnitConverter.__convert(value, 2.54, accuracy)
 
     @staticmethod
     def inch_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 0.0254, accuracy)
+        return EmpireUnitConverter.__convert(value, 0.0254, accuracy)
 
     @staticmethod
     def foot_to_mm(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 304.8, accuracy)
+        return EmpireUnitConverter.__convert(value, 304.8, accuracy)
 
     @staticmethod
     def foot_to_cm(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 30.48, accuracy)
+        return EmpireUnitConverter.__convert(value, 30.48, accuracy)
 
     @staticmethod
     def foot_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 0.3048, accuracy)
+        return EmpireUnitConverter.__convert(value, 0.3048, accuracy)
 
     @staticmethod
     def yard_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 0.9144, accuracy)
+        return EmpireUnitConverter.__convert(value, 0.9144, accuracy)
 
     @staticmethod
     def chain_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 20.117, accuracy)
+        return EmpireUnitConverter.__convert(value, 20.117, accuracy)
 
     @staticmethod
     def furlong_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 201.17, accuracy)
+        return EmpireUnitConverter.__convert(value, 201.17, accuracy)
 
     @staticmethod
     def miles_to_m(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 1609.3, accuracy)
+        return EmpireUnitConverter.__convert(value, 1609.3, accuracy)
 
     @staticmethod
     def miles_to_km(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 1.6093, accuracy)
+        return EmpireUnitConverter.__convert(value, 1.6093, accuracy)
 
     # ==обратно===============================
     @staticmethod
     def mm_to_inch(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 25.4, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 25.4, accuracy)
 
     @staticmethod
     def cm_to_inch(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 2.54, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 2.54, accuracy)
 
     @staticmethod
     def m_to_inch(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 0.0254, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 0.0254, accuracy)
 
     @staticmethod
     def mm_to_foot(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 304.8, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 304.8, accuracy)
 
     @staticmethod
     def cm_to_foot(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 30.48, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 30.48, accuracy)
 
     @staticmethod
     def m_to_foot(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 0.3048, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 0.3048, accuracy)
 
     @staticmethod
     def m_to_yard(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 0.9144, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 0.9144, accuracy)
 
     @staticmethod
     def m_to_chain(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 20.117, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 20.117, accuracy)
 
     @staticmethod
     def m_to_furlong(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 201.17, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 201.17, accuracy)
 
     @staticmethod
     def m_to_miles(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 1609.3, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 1609.3, accuracy)
 
     @staticmethod
     def km_to_miles(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 1.6093, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 1.6093, accuracy)
 
     # ==Volume (UK)=============================
     @staticmethod
     def gallon_to_liter(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 4.54609, accuracy)
+        return EmpireUnitConverter.__convert(value, 4.54609, accuracy)
 
     @staticmethod
     def pint_to_liter(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 0.5683, accuracy)
+        return EmpireUnitConverter.__convert(value, 0.5683, accuracy)
 
     # ==Volume (UK)=обратно=====================
     @staticmethod
     def liter_to_gallon(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 4.54609, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 4.54609, accuracy)
 
     @staticmethod
     def liter_to_pint(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 0.5683, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 0.5683, accuracy)
 
     # ==Units of mass (UK)======================
     @staticmethod
     def ounce_to_gramms(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 28.35, accuracy)
+        return EmpireUnitConverter.__convert(value, 28.35, accuracy)
 
     @staticmethod
     def troy_ounce_to_gramms(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 31.1, accuracy)
+        return EmpireUnitConverter.__convert(value, 31.1, accuracy)
 
     @staticmethod
     def pound_to_gramms(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 453.6, accuracy)
+        return EmpireUnitConverter.__convert(value, 453.6, accuracy)
 
     @staticmethod
     def stone_to_kg(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value * 6.350, accuracy)
+        return EmpireUnitConverter.__convert(value, 6.35, accuracy)
 
     # ==Units of mass (UK)==обратно=============
     @staticmethod
     def gramms_to_ounce(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 28.35, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 28.35, accuracy)
 
     @staticmethod
     def gramms_to_troy_ounce(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 31.1, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 31.1, accuracy)
 
     @staticmethod
     def gramms_to_pound(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 453.6, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 453.6, accuracy)
 
     @staticmethod
     def kg_to_stone(value, accuracy=accuracy):
-        EmpireUnitConverter.count += 1
-        return round(value / 6.350, accuracy)
+        return EmpireUnitConverter.__convert(value, 1 / 6.35, accuracy)
 
 
 conv_emp = EmpireUnitConverter()
