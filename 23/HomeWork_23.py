@@ -48,7 +48,7 @@ c_car = Car("Toyota Camry")
 cars = [a_car, b_car, c_car]
 for car in cars: print(car.model)
 for car, color, volume in zip(cars, colors, volumes): car.car_color = color; car.engine_volume = volume
-d_car = Car("")  # Создает экземпляр Car, вместо пустого значения полю 'model' устанавливает значение "Undefined model"
+d_car = Car("")  # Создает экземпляр Car, но не позволяет установить пустое значение полю 'model'
 print(d_car, d_car.__dict__)
 d_car.model = "BMW 115i"
 d_car.car_color = "white"
@@ -135,3 +135,26 @@ class Stadium:
               f'страна: {self.country}\n\t'
               f'год открытия: {self.year}\n\t'
               f'вместимость: {self.capacity};')
+
+
+class StadiumRus(Stadium):
+    def __init__(self, name, city):
+        super().__init__(name, city)
+        self.country = "Russia"
+
+    @property
+    def country(self):
+        return self._country
+
+    @country.setter
+    def country(self, value):
+        if value != "Russia":
+            print(f"For class {StadiumRus.__name__} attribute country is only 'Russia'."
+                  f" Attribute Value was changed in 'Russia'")
+        self._country = "Russia"
+
+
+stad_1 = StadiumRus("Arena", "Saint-Petersburg")
+stad_1.country = "Belgium"
+print(stad_1.country)
+stad_1.country = "Russia"
