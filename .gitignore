@@ -3,4 +3,5 @@ pre*
 *.pdf
 *.xls*
 *.txt
+!26/*.txt
 #Home*[a-z].py
