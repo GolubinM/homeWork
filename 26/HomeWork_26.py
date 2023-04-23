@@ -83,7 +83,7 @@ class Shape:
     @staticmethod
     def save(figure, filename):
         with open(filename, 'w') as f:
-            if isinstance(figure, list) and any([isinstance(fig, Shape) for fig in figure]):
+            if isinstance(figure, list) and all([isinstance(fig, Shape) for fig in figure]):
                 with open(filename, 'a') as f:
                     for fig in figure: f.write(f"{fig.__repr__()}\n")
             elif isinstance(figure, Shape):
