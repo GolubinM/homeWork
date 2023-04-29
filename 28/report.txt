@@ -1,0 +1,26 @@
+Задание 1. Реализуйте класс «Автомобиль».
+Mercedes SL350, 2015, White
+BMW 320D, 2019, Black
+Toyota Camry, 1998, Grey
+pikle cars
+<class '__main__.Car'> <class '__main__.Car'> <class '__main__.Car'> [Mercedes SL350, 2015, White, BMW 320D, 2019, Black, Toyota Camry, 1998, Grey]
+JSON cars
+<class '__main__.Car'> <class '__main__.Car'> <class '__main__.Car'> [Mercedes SL350, 2015, White, BMW 320D, 2019, Black, Toyota Camry, 1998, Grey]
+Mercedes SL350, 2015, White <class '__main__.Car'>
+
+
+Задание 2. Реализуйте класс «Книга».
+АРХИТЕКТУРА ЭВМ, Жмакин А.П., 2010, компьютерная литература <class '__main__.Book'>
+Мини-ЭВМ. Организация и программирование, Экхауз Р., Моррис Л., 1983, компьютерная литература
+Мини-ЭВМ. Организация и программирование, Экхауз Р., Моррис Л., 1983, компьютерная литература <class '__main__.Book'>
+
+
+Задание 3. Реализуйте класс «Стадион».
+Стадион: Arena
+	город: Saint-Petersburg
+	страна: Russia
+	год открытия: 2010
+	вместимость: 250000;
+<class '__main__.Stadium'>
+
+Process finished with exit code 0
