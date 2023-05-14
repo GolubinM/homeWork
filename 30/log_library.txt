@@ -1,0 +1,15 @@
+2023-05-14 03:03:09 : init library
+2023-05-14 03:03:09 : Librarian with 'Alex' title was found.
+2023-05-14 03:03:09 : Librarian with 'Alexis' title was not found.
+2023-05-14 03:03:09 : Reader 'Vasiliy' was found.
+2023-05-14 03:03:09 : Reader 'Vasilisa' was not found.
+2023-05-14 03:03:09 : save library
+2023-05-14 03:03:09 : Reader 'Vasiliy' was deleted.
+2023-05-14 03:03:09 : Reader 'Vasia' was not found.
+2023-05-14 03:03:09 : Library was printed out
+2023-05-14 03:03:09 : Readers were printed out
+2023-05-14 03:03:17 : Data for reader Fedor was changed
+2023-05-14 03:03:17 : Olga has access to book 'Magic Secrets'
+2023-05-14 03:03:17 : Fedor has access to book 'Logarithmic reference'
+2023-05-14 03:03:17 : save library
+2023-05-14 03:03:17 : New book 'Ice and Flame' was added to library

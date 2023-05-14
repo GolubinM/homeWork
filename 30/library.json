@@ -1,0 +1,33 @@
+{
+  "books_in_library": {
+    "1": {
+      "min access level": 5,
+      "title": "Magic Secrets"
+    },
+    "2": {
+      "min access level": 2,
+      "title": "Gone with the Wind"
+    },
+    "3": {
+      "min access level": 1,
+      "title": "Logarithmic reference"
+    },
+    "4": {
+      "min access level": 3
+    }
+  },
+  "librarians": {
+    "1": "Alex",
+    "2": "Anna"
+  },
+  "readers": {
+    "Fedor": {
+      "access level": 1,
+      "age": 44
+    },
+    "Olga": {
+      "access level": 5,
+      "age": 5
+    }
+  }
+}

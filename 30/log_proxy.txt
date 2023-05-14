@@ -1,0 +1,40 @@
+2023-05-13 21:14:41 : load numbers : loaded 155 elms 
+2023-05-13 21:14:41 : find MAX : 983 
+2023-05-13 21:14:41 : load numbers : loaded 155 elms 
+2023-05-13 21:14:41 : find MIN : -1000 
+2023-05-13 21:14:41 : load numbers : loaded 155 elms 
+2023-05-13 21:14:41 : find SUM : -5882 
+2023-05-13 21:14:41 : renew numbers : saved 17 renew elms 
+2023-05-13 21:14:41 : load numbers : loaded 17 elms 
+2023-05-13 21:14:41 : find MAX : 948 
+2023-05-13 21:14:41 : load numbers : loaded 17 elms 
+2023-05-13 21:14:41 : find MIN : -941 
+2023-05-13 21:14:41 : load numbers : loaded 17 elms 
+2023-05-13 21:14:41 : find SUM : 299 
+2023-05-13 21:14:41 : renew numbers : saved 124 renew elms 
+2023-05-13 21:14:41 : load numbers : loaded 124 elms 
+2023-05-13 21:14:41 : find MAX : 999 
+2023-05-13 21:14:41 : load numbers : loaded 124 elms 
+2023-05-13 21:14:41 : find MIN : -974 
+2023-05-13 21:14:41 : load numbers : loaded 124 elms 
+2023-05-13 21:14:41 : find SUM : 8427 
+2023-05-13 21:15:52 : load numbers : loaded 359 elms 
+2023-05-13 21:15:52 : find MAX : 1000 
+2023-05-13 21:15:52 : load numbers : loaded 359 elms 
+2023-05-13 21:15:52 : find MIN : -997 
+2023-05-13 21:15:52 : load numbers : loaded 359 elms 
+2023-05-13 21:15:52 : find SUM : 44068 
+2023-05-13 21:15:52 : renew numbers : saved 335 renew elms 
+2023-05-13 21:15:52 : load numbers : loaded 335 elms 
+2023-05-13 21:15:52 : find MAX : 1000 
+2023-05-13 21:15:52 : load numbers : loaded 335 elms 
+2023-05-13 21:15:52 : find MIN : -993 
+2023-05-13 21:15:52 : load numbers : loaded 335 elms 
+2023-05-13 21:15:52 : find SUM : 2890 
+2023-05-13 21:15:52 : renew numbers : saved 20 renew elms 
+2023-05-13 21:15:52 : load numbers : loaded 20 elms 
+2023-05-13 21:15:52 : find MAX : 608 
+2023-05-13 21:15:52 : load numbers : loaded 20 elms 
+2023-05-13 21:15:52 : find MIN : -980 
+2023-05-13 21:15:52 : load numbers : loaded 20 elms 
+2023-05-13 21:15:52 : find SUM : -4092 
