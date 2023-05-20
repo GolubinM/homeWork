@@ -1,7 +1,7 @@
 class View:
     @staticmethod
     def print_tab(header, tab):
-        """ выводит таблицу на дисплей, возвращает к-во эл-в таблицы"""
+        """ Выводит таблицу на дисплей, возвращает к-во эл-в таблицы"""
         count_recs = len(tab)
         if count_recs:
             width_field = max([max([len(str(val)) for val in elm.__dict__.values()]) for elm in tab]) + 4
@@ -32,7 +32,7 @@ class View:
         return query
 
     @staticmethod
-    def get_target(self):
+    def get_target():
         word = input("Введите ключевое слово для поиска элемента\n"
                      "Enter - выход из поиска: ")
         return word
