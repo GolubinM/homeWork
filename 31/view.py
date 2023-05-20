@@ -47,7 +47,7 @@ class View:
         while True:
             try:
                 number_rec = int(input("Выберете номер записи\n"
-                                       "0 - выход без удаления: "))
+                                       "0 - выход: "))
                 if number_rec in control_range:
                     break
             except ValueError:
