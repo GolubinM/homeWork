@@ -1,9 +1,9 @@
 class View:
-    def print_tab(self, header, tab):
+    @staticmethod
+    def print_tab(header, tab):
         """ выводит таблицу на дисплей, возвращает к-во эл-в таблицы"""
         count_recs = len(tab)
         if count_recs:
-            # print([[val for key, val in elm.__dict__.items()] for elm in tab])
             width_field = max([max([len(str(val)) for val in elm.__dict__.values()]) for elm in tab]) + 4
             width_tab = (width_field + 2) * len(tab[0].__dict__.items()) + 3
             print('-' * width_tab)
@@ -17,7 +17,8 @@ class View:
                 print(*str_pr, sep="| ")
         return count_recs
 
-    def wait_user_answer(self):
+    @staticmethod
+    def wait_user_answer():
         print("Ожидание пользовательского ввода: ".center(100, '='))
         print("Доступные действия:\n"
               "1. Отобразить список элементов\n"
@@ -30,6 +31,7 @@ class View:
         query = input("Введите номер действия: ")
         return query
 
+    @staticmethod
     def get_target(self):
         word = input("Введите ключевое слово для поиска элемента\n"
                      "Enter - выход из поиска: ")

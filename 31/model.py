@@ -26,15 +26,15 @@ class Model:
         self.ws = self.wb[sheetname]
         ws_values = list(self.ws.values)
         self.header = ws_values[0]
-        # self.database = ws_values[1:]
         self.database = [self.__obj_from_row__(row_record) for row_record in ws_values[1:]]
 
-    def __obj_from_row__(self, row_record):
-        # подстраховка на случай пустых полей БД
+    @staticmethod
+    def __obj_from_row__(row_record):
         data_from_row = [elm if elm else "" for elm in row_record]
         return Shoes(*data_from_row)
 
-    def __obj_to_row__(self, obj):
+    @staticmethod
+    def __obj_to_row__(obj):
         return [elm for elm in obj.__dict__.values()]
 
     @staticmethod
