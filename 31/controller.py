@@ -15,7 +15,7 @@ class Controller:
         print("Good buy!")
 
     def create_shoes_obj(self, num_str):
-        return self.model.shoes_from_row(num_str)
+        return self.model.__obj_from_row__(num_str)
 
     def eval_user_answer(self, query):
         if query == "1":
@@ -47,7 +47,7 @@ class Controller:
                     new_row.append(self.view.input_value(invite_str))
                 else:
                     new_row.append(self.view.input_str(invite_str))
-            self.model.change_rec(num_rec + 1, new_row)
+            self.model.add_new_obj(num_rec + 1, new_row)
 
         elif query == "4":
             num_rec = self.view.get_num_records(self.model.header, self.model.database)
@@ -66,6 +66,6 @@ class Controller:
                         new_row.append(self.view.input_value(invite_str))
                     else:
                         new_row.append(self.view.input_str(invite_str))
-                self.model.change_rec(num_rec + 1, new_row)
+                self.model.change_rec_obj(num_rec, new_row)
             else:
                 self.view.message_out("Изменение не выполнено!")

@@ -7,9 +7,6 @@ def main():
         if os.path.exists("shoesDB.xlsx"):
             app = Controller("shoesDB.xlsx", 'Лист1')
             app.run()
-            sh1 = app.create_shoes_obj(1)
-            print(sh1)
-
         else:
             raise FileExistsError
     except FileExistsError:

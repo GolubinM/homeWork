@@ -3,15 +3,16 @@ class View:
         """ выводит таблицу на дисплей, возвращает к-во эл-в таблицы"""
         count_recs = len(tab)
         if count_recs:
-            width_field = max([max([len(str(elm)) for elm in row]) for row in tab]) + 8
-            width_tab = (width_field + 2) * len(tab[0]) + 3
+            # print([[val for key, val in elm.__dict__.items()] for elm in tab])
+            width_field = max([max([len(str(val)) for val in elm.__dict__.values()]) for elm in tab]) + 4
+            width_tab = (width_field + 2) * len(tab[0].__dict__.items()) + 3
             print('-' * width_tab)
             str_pr = [f"{elm: <{width_field}}" for elm in header]
             print("№  ", sep="", end="| ")
             print(*str_pr, sep="| ")
             print('-' * width_tab)
-            for num, string in enumerate(tab):
-                str_pr = [f"{elm: <{width_field}}" for elm in string]
+            for num, obj in enumerate(tab):
+                str_pr = [f"{elm: <{width_field}}" for elm in obj.__dict__.values()]
                 print(f"{num + 1: <3}", sep="", end="| ")
                 print(*str_pr, sep="| ")
         return count_recs
