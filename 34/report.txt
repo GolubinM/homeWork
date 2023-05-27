@@ -1,0 +1,71 @@
+"C:/Program Files/JetBrains/PyCharm Community Edition 2022.3.1/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Lesson\Git\homeWorks\34\HomeTask_34.py
+Testing started at 21:21 ...
+Launching unittests with arguments python -m unittest C:\Lesson\Git\homeWorks\34\HomeTask_34.py in C:\Lesson\Git\homeWorks\34
+
+
+Результат с аргументами [100, 50, 25, 10, 5] должен равняться 38.0!
+38.0 != 31.0
+
+Expected :31.0
+Actual   :38.0
+<Click to see difference>
+
+Traceback (most recent call last):
+  File "C:\Lesson\Git\homeWorks\34\HomeTask_34.py", line 36, in test_avr
+    self.assertEqual(31.0, self.int_nums.average_numbers(),
+AssertionError: 31.0 != 38.0 : Результат с аргументами [100, 50, 25, 10, 5] должен равняться 38.0!
+
+
+
+
+Результат с аргументами [100, 50, 25, 10, 5] должен равняться 100!
+100 != 101
+
+Expected :101
+Actual   :100
+<Click to see difference>
+
+Traceback (most recent call last):
+  File "C:\Lesson\Git\homeWorks\34\HomeTask_34.py", line 40, in test_max
+    self.assertEqual(101, self.int_nums.max_numb(),
+AssertionError: 101 != 100 : Результат с аргументами [100, 50, 25, 10, 5] должен равняться 100!
+
+
+
+
+Результат с аргументами [100, 50, 25, 10, 5] должен равняться 5!
+5 != 51
+
+Expected :51
+Actual   :5
+<Click to see difference>
+
+Traceback (most recent call last):
+  File "C:\Lesson\Git\homeWorks\34\HomeTask_34.py", line 44, in test_min
+    self.assertEqual(51, self.int_nums.min_numb(),
+AssertionError: 51 != 5 : Результат с аргументами [100, 50, 25, 10, 5] должен равняться 5!
+
+
+
+
+Результат с аргументами [100, 50, 25, 10, 5] должен равняться 190!
+190 != 191
+
+Expected :191
+Actual   :190
+<Click to see difference>
+
+Traceback (most recent call last):
+  File "C:\Lesson\Git\homeWorks\34\HomeTask_34.py", line 32, in test_sum
+    self.assertEqual(191, self.int_nums.summ_numb(),
+AssertionError: 191 != 190 : Результат с аргументами [100, 50, 25, 10, 5] должен равняться 190!
+
+
+
+
+
+Ran 14 tests in 0.012s
+
+FAILED (failures=4)
+
+Process finished with exit code 1
