@@ -146,11 +146,11 @@ def get_folders_content(fold_path="", tab=0):
         if size <= 1000000:
             return f"{size / 1024:.3f}Kb"
         elif 1000000 < size <= 1000000000:
-            return f"{size / 1024 ** 2:.3f}Mb"
+            return f"{size / (1024 * 2):.3f}Mb"
         elif 1000000000 < size <= 1000000000000:
-            return f"{size / 1024 * 3:.3f}Gb"
+            return f"{size / (1024 * 3):.3f}Gb"
         elif 1000000000000 < size:
-            return f"{size / 1024 * 3:.3f}Tb"
+            return f"{size / (1024 * 4):.3f}Tb"
 
     with os.scandir(fold_path) as files:
         files = sorted(files, key=lambda elm: elm.is_dir())
