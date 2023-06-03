@@ -1,0 +1,73 @@
+C:\Lesson\Git\homeWorks\35\HomeTask_35.py
+ img.jpg  183.008Kb
+ img2.jpg  68.062Kb
+ img3.jpg  66.854Kb
+ img4.jpg  56.288Kb
+ report.csv  2.173Mb
+ report1.csv  4.862Mb
+ report200.csv  3.099Mb
+ ЖурналВыгрузки.xlsb  4.191Mb
+ ПланОбъединениеИсточниковДляПродажиДеньгиПонедельно.xlsx  11.451Kb
+ Процесс.xlsx  185.334Kb
+ 29 урок\
+      Abstract Factory.py  2.201Kb
+      Builder.py  4.494Kb
+      Factory.py  2.338Kb
+      main.py  7.585Kb
+      Prototype.py  1.335Kb
+      Singleton.py  0.976Kb
+      123\
+           git_builder.py  3.783Kb
+           - всего файлов в папке:  1 размер файлов в папке:  3.783Kb
+      Домашнее задание\
+           Python_DZ_Modul__12_Patterny_proektirovania_c_1_1582793118.pdf  725.979Kb
+           - всего файлов в папке:  1 размер файлов в папке:  725.979Kb
+      - всего файлов в папке:  6 размер файлов в папке:  18.929Kb
+ new\
+      report.xlsb  15.372Kb
+      report100.csv  0.061Kb
+      split-sheets.xls  40.500Kb
+      Tips_Macro_LOG.xls  46.500Kb
+      ЖурналВыгрузки.xlsx  8.704Kb
+      Книга7.csv  2.211Mb
+      отчет_test.xlsb  11.667Mb
+      Резервная копия report200.xlk  2.173Mb
+      - всего файлов в папке:  8 размер файлов в папке:  16.159Mb
+ old\
+      30тМак.xlsx  3.501Mb
+      70тМак.xlsx  9.023Mb
+      data_from_csv.txt  1.677Kb
+      folder_id.txt  0.000Kb
+      GoogleDriveSetup.exe  290.809Mb
+      orderSales.csv  16.546Mb
+      orderSales2.csv  44.778Mb
+      orderSales2_2.csv  44.778Mb
+      orderSales2_3.csv  44.778Mb
+      orderSales2_31.csv  13.822Mb
+      orderSales2_4.csv  8.894Mb
+      orderSales5.csv  8.894Mb
+      report.csv  1.472Kb
+      report.xlsx  19.993Mb
+      report1.csv  1.470Kb
+      report1000.csv  269.315Kb
+      report2.csv  40.765Mb
+      report43t.csv  10.628Mb
+      Sales.csv  7.237Mb
+      toSend.xlsm  19.186Kb
+      toSend1.xlsm  17.280Kb
+      VBA_w3_15.xlsb  9.936Mb
+      VBA_w3_15.xlsx  38.523Mb
+      Исходные данные.xlsx  16.744Mb
+      Книга1.csv  0.021Kb
+      Книга2.csv  0.018Kb
+      Книга3.csv  0.018Kb
+      Книга4.txt  0.037Kb
+      Книга4.xml  7.035Kb
+      код_промежут_1.txt  3.920Kb
+      отчет2.xlsb  8.957Mb
+      ПроверкаПродажиВыгруз.xlsx  14.690Mb
+      сравнить5 ВБ v 2.0.xlsx  18.406Mb
+      - всего файлов в папке:  33 размер файлов в папке:  672.017Mb
+ - всего файлов в папке:  10 размер файлов в папке:  14.902Mb
+
+Process finished with exit code 0
