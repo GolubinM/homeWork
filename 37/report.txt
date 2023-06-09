@@ -1,0 +1,25 @@
+C:\Lesson\Git\homeWorks\37\HomeTask_37.py
+Введите описание задачи: Купить лопаты
+Введите имя ответственного за выполнение задачи: Sally
+Task 'Купить лопаты' was created.
+Task 'Вырыть яму' was created.
+Task 'Расширить яму' was created.
+Task 'Посадить дерево' was created.
+'User' object has no attribute 'task_create' Данный пользователь не является экземпляром класса Admin!
+Task 'Закопать яму' was created.
+['Вырыть яму']
+['Вырыть яму', 'Расширить яму', 'Закопать яму']
+['Купить лопаты', 'Вырыть яму', 'Расширить яму', 'Посадить дерево', 'Закопать яму']
+['Купить лопаты: Sally', 'Вырыть яму: Karl', 'Расширить яму: Pierre', 'Посадить дерево: Pole', 'Закопать яму: Serge']
+['Посадить дерево: Pole']
+['Sally: Купить лопаты', 'Karl: Вырыть яму', 'Pierre: Расширить яму', 'Pole: Посадить дерево', 'Serge: Закопать яму']
+Executor 'Закопать яму' task set as 'Karl'
+['Sally: Купить лопаты', 'Karl: Вырыть яму', 'Pierre: Расширить яму', 'Pole: Посадить дерево', 'Karl: Закопать яму']
+1. Купить лопаты: Sally, start at Sat Jun 10 00:09:31 2023, is completed: False
+2. Вырыть яму: Karl, start at Sat Jun 10 00:09:31 2023, is completed: True
+3. Расширить яму: Pierre, start at Sat Jun 10 00:09:31 2023, is completed: True
+4. Посадить дерево: Pole, start at Sat Jun 10 00:09:31 2023, is completed: False
+5. Закопать яму: Karl, start at Sat Jun 10 00:09:31 2023, is completed: False
+'User' object has no attribute 'get_tasks_full_info' Данный пользователь не является экземпляром класса Admin!
+
+Process finished with exit code 0
