@@ -1,0 +1,52 @@
+C:\Lesson\Git\homeWorks\38\HomeTask_38.py
+Логин и пароль корректны. Учетная запись с логином Login1 зарегистрирована на Twitter.
+Логин не уникален или не соответствует правилам регистрации Twitter
+Не возможно зарегистрироваться в этой социальной сети
+-*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-
+Access on resource1 for Login1 account is open.
+Access on resource2 for Login1 account is open.
+'Cont5' is published
+Incorrect content 'Нельзя так говорить' by 'Login1' account. Publication refused
+Login 'Login1' is added in block list for 'resource1' resource.
+-*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-
+-*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-
+1).** class File ***********
+<class '_io.TextIOWrapper'>
+Пример содержания: 1
+
+2).*************************
+Пример содержания: 1
+Пример содержания: 2
+
+3).*************************
+test1.txt: attempt to read on Sun Jun 11 02:56:14 2023, is successful: True.
+my_diary.txt: attempt to read on Sun Jun 11 02:56:14 2023, is successful: True.
+Пример содержания: 1
+Пример содержания: 2
+
+4).*************************
+Access to 'my_diary.txt' file is denied
+False
+5.1).*************************
+'test1.txt' file content was added to cash
+Пример содержания: 1
+Пример содержания: 2
+
+5.2).***cashed content********
+Пример содержания: 1
+Пример содержания: 2
+
+<__main__.Receiver object at 0x00000145718D83D0>
+<__main__.Receiver object at 0x00000145718D83D0>
+<__main__.VolumeUpCommand object at 0x00000145718D8490>
+Power on.
+Volume increase.
+Volume decrease
+Volume decrease
+Last command 'VolumeDownCommand' was repeated
+Last command 'VolumeDownCommand' was canceled
+Last command 'VolumeDownCommand' was canceled
+Last command 'VolumeUpCommand' was canceled
+Last command 'PowerOnCommand' was canceled
+
+Process finished with exit code 0
