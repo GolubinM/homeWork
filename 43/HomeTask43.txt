@@ -1,0 +1,243 @@
+1.	Сосчитать количество клиентов, покупающих товар. 20
+SELECT count(DISTINCT innclient) 
+  FROM clientGoods;
+
+
+2.	Сколько посредников поставляют товар для фирмы. 4
+SELECT count(DISTINCT s.INNSeller) 
+  FROM sallerGoods sg,
+       seller s
+ WHERE sg.INNSeller = s.INNSeller AND 
+       s.Status = 'посредник';
+
+
+3.	Вывести среднюю сумму сделки по проданному товару. 28 средних сумм должно быть
+
+SELECT avg(count * Costunit)
+  FROM clientgoods
+ GROUP BY id;
+
+4.	Посчитать на какую сумму было всего поставлено товара. 84743
+SELECT sum(count * Costunit)
+  FROM sallergoods;
+
+5.	Определите максимальное количество закупленного товара шт.(кг) 550
+SELECT max(count) 
+  FROM clientgoods;
+
+6.	Какая минимальная сумма покупки, на которую клиент сделал заказ. 30
+SELECT min(count * CostUnit) 
+  FROM clientgoods;
+
+7.	Посчитать на какую сумму было продано товара магазинам. 14255.25
+SELECT sum(count * CostUnit) 
+  FROM clientgoods cg,
+       client c
+ WHERE cg.INNClient = c.INNClient AND 
+       c.Status = "магазин";
+
+8.	Сосчитать общее количество видов закупленных фирмой вафель. 1
+мне кажется верно так(количество видов закупленных фирмой вафель):
+SELECT count(DISTINCT goods) 
+  FROM sallergoods
+ WHERE goods GLOB '*афли*'
+-------------------------------------------------------------------------------------------
+129	124568888	1045	2007-11-13 00:00:00	Вафли "Артек"		8.6	65
+159	545855588	1045	2007-11-14 00:00:00	Вафли "Снежинка"	9.05	50
+-------------------------------------------------------------------------------------------
+count=2
+-------------------------------------------------------------------------------------------
+Но для подгонки к ответу(количество проданных клиентам видов вафель = 1) так:
+SELECT count(DISTINCT goods) 
+  FROM clientgoods cg,
+       sallergoods sg
+ WHERE goods GLOB '*афли*' AND 
+       sg.ID = cg.ID;
+
+
+9.	Выведите среднюю цену на растительное масло (закупочную). 14.62
+Закупочная цена - цена от поставщика, по которой фирма закупает товар у селлера(клиент - это тот, кто платит деньги, его цена - цена реализации(продажная)).
+В ИТОГЕ средняя закупочная цена:
+SELECT avg(costunit)
+  FROM sallergoods
+  where goods glob '*масло*' and not goods glob '*сливоч*';
+результат = 10.1
+
+Средняя цена реализации(продажная):
+SELECT avg(cg.CostUnit) 
+  FROM clientgoods cg,
+       sallergoods sg
+ WHERE sg.goods GLOB '*масло*' AND 
+       NOT sg.goods GLOB '*сливоч*' AND 
+       cg.ID = sg.ID;
+результат = 14.62
+-- Вот потому бухгалтеров и не любят... особенно сами бухгалтеры.
+
+10.	Определите сколько всего было продано килограмм яблок. 340
+SELECT sum(cg.Count) 
+  FROM clientgoods cg,
+       sallergoods sg
+ WHERE sg.goods GLOB 'Яблок*' AND 
+       cg.ID = sg.ID;
+
+11.	Определите какое количество картофеля закупили кафе. 410
+SELECT sum(cg.Count) 
+  FROM clientgoods cg,
+       sallergoods sg,
+       client c
+ WHERE c.Status = 'кафе' AND 
+       sg.goods GLOB '*артоф*' AND 
+       cg.INNClient = c.INNClient AND 
+       sg.ID = cg.ID;
+
+12.	Посчитать сколько клиентов купили перец черный молотый. 4
+SELECT count(DISTINCT cg.INNClient) AS client
+  FROM clientgoods cg,
+       sallergoods sg
+ WHERE sg.goods = 'Перец черный молотый' AND 
+       sg.ID = cg.ID;
+
+
+//***  Что-то не сошлось у меня по пункту 13 *****************************************
+13.	Определить сколько наименований товара было куплено у посредников. 4 -- не верно (это количество посредников которым продан товар)
+закуплено у посредников 13 уникальных наименований товара:
+goods
+Белизна
+Вафли "Артек"
+Вафли "Снежинка"
+мочалки
+Моющие для посуды
+Паста томатная
+Перец красный молотый
+Перец черный горошек
+Перец черный молотый
+Печенье галетное
+Соус острый
+Соус шашлычный
+универсальный отбеливатель
+количество строк 13
+SELECT count(DISTINCT sg.Goods) AS goods
+  FROM seller s,
+       sallergoods sg
+ WHERE s.INNSeller = sg.INNSeller AND 
+       s.Status = 'посредник';
+
+Продано посредникам уникальных наименоваий:
+goods
+тарелки мелкие
+колбаса "любительская"
+Шпроты в масле
+Сельдь провесная
+салатницы
+Перец черный молотый
+Груши
+количество строк: 7
+SELECT count(DISTINCT sg.Goods) AS goods
+  FROM client c,
+       clientgoods cg,
+       SallerGoods sg
+ WHERE c.INNClient = cg.INNClient AND 
+       sg.ID = cg.ID AND 
+       c.Status = 'посредник';
+
+14.	Определить минимальную цену за единицу проданного товара.  0.3
+SELECT min(costunit) 
+  FROM clientgoods;
+
+15.	Определить максимальную сумму за товар, проданный магазинам. 2194.5
+SELECT max(cg.CostUnit * cg.Count) 
+  FROM clientgoods cg,
+       client c
+ WHERE c.INNClient = cg.INNClient AND 
+       c.Status = 'магазин';
+
+16.	Определить сколько всего фирм проводило сделки. 34
+SELECT count(DISTINCT sg.INNSeller) + count(DISTINCT cg.INNClient) 
+  FROM sallergoods sg,
+       clientgoods cg;
+
+17.	Определить минимальную сумму сделки по закупке товара у производителей. 99
+SELECT min(sg.CostUnit * sg.Count) 
+  FROM sallergoods sg,
+       seller s
+ WHERE s.Status = 'производитель' AND 
+       s.INNSeller = sg.INNSeller;
+
+18.	Определить среднюю цену за пачку чая при покупке.  6.4(6)
+SELECT avg(s.CostUnit) 
+  FROM sallergoods s
+ WHERE s.Goods LIKE 'Чай%';
+
+19.	Определите максимальную сумму прибыли за товар, проданный посреднику. 4741.5 Правильный (32)
+SELECT max((cg.CostUnit - sg.CostUnit) * cg.Count)
+  FROM sallergoods sg,
+       clientgoods cg,
+       client c
+ WHERE sg.ID = cg.ID AND 
+       c.INNClient = cg.INNClient AND 
+       c.Status = 'посредник';
+
+20.	 Определите минимальную прибыль за товар, купленный у посредника. 24.3 Правильный (5)
+SELECT min((cg.CostUnit - sg.CostUnit) * cg.Count)
+  FROM sallergoods sg,
+       clientgoods cg,
+       seller s
+ WHERE sg.ID = cg.ID AND 
+       s.INNSeller = sg.INNSeller AND 
+       s.Status = 'посредник';
+
+21.	 Сколько в продаже видов печенья. 1
+SELECT count( * ) 
+  FROM sallergoods sg
+ WHERE sg.Goods LIKE '%еченье%';
+
+22.	 Какая максимальная сумма покупки, на которую клиент сделал заказ. 2430
+SELECT max(cg.CostUnit * cg.Count) 
+  FROM clientgoods cg;
+
+23.	 Определите среднюю прибыль от перепродажи масла. 30.06914893617022
+SELECT avg( (cg.CostUnit - sg.CostUnit) * cg.Count) 
+  FROM sallergoods sg,
+       clientgoods cg
+ WHERE sg.ID = cg.ID AND 
+       sg.Goods LIKE '%асло%';
+
+24.	 Со сколькими посредниками сотрудничает фирма.  9
+Количество уникальных контрагнетов, с которыми проводились сделки, со статусом = 'посредник'
+SELECT count(DISTINCT cs) 
+  FROM (
+           SELECT c.INNClient AS cs
+             FROM client c,
+                  clientgoods cg
+            WHERE cg.INNClient = c.INNClient AND 
+                  c.Status = 'посредник'
+           UNION
+           SELECT s.INNSeller
+             FROM seller s,
+                  sallergoods sg
+            WHERE sg.INNSeller = s.INNSeller AND 
+                  s.Status = 'посредник'
+       );
+result:8
+
+Сумма покупавших и продающих товар посредиков:8
+SELECT count(DISTINCT cg.innclient) + count(DISTINCT sg.INNSeller) 
+  FROM clientGoods cg,
+       sallergoods sg,
+       client c,
+       seller s
+ WHERE cg.INNClient = c.INNClient AND 
+       sg.INNSeller = s.INNSeller AND 
+       s.Status = 'посредник' AND 
+       c.Status = 'посредник';
+result:8
+
+Всего контрагентов со статусом 'посредник' в обеих таблицах, без учета сотрудничества и возможных повторений
+select cl+se from
+(select count(*) cl
+from client c
+where c.Status='посредник'),
+(select count(*) se
+from seller s
+where s.Status='посредник')
+result:9
