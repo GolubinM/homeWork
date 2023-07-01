@@ -1,0 +1,91 @@
+1.	Выведите перечень сумм заказов продавца Rifkin.
+SELECT orders_sum
+  FROM (
+           SELECT o.amt orders_sum,
+                  sp.sname name
+             FROM orders o,
+                  salespeople sp
+            WHERE o.snum = sp.snum
+       )
+ WHERE name = 'Rifkin';
+
+2.	Определите  комиссионные всех продавцов, обслуживающих заказчиков в Риме
+SELECT round(orders_sum * com, 2) comission_sum,
+       sp.sname name
+  FROM (
+           SELECT o.snum seller_num,
+                  o.amt orders_sum
+             FROM orders o,
+                  customers c
+            WHERE o.cnum = c.cnum AND
+                  c.city = 'Rome'
+       ),
+       salespeople sp
+ WHERE sp.snum = seller_num;
+
+3.	Напишите запрос, который определит заказчиков имеющих рейтинг ниже среднего.
+SELECT c2.cname name,
+       c2.rating rating
+  FROM (
+           SELECT avg(c.rating) aver_rate
+             FROM customers c
+       ),
+       customers c2
+ WHERE c2.rating < aver_rate;
+
+
+4.	Определите города проживания заказчиков с наименьшим рейтингом.
+SELECT DISTINCT c2.city
+  FROM (
+           SELECT avg(c.rating) aver_rate
+             FROM customers c
+       ),
+       customers c2
+ WHERE c2.rating < aver_rate;
+
+5.	Напишите запрос, который выводил бы заказы клиента Liu
+SELECT *
+  FROM (
+           SELECT o.*,
+                  c.cname
+             FROM customers c,
+                  orders o
+            WHERE c.cnum = o.cnum
+       )
+ WHERE cname = 'Liu';
+
+6.	Определите наибольшие комиссионные продавца для Рима.
+SELECT max(round(orders_sum * com, 2) ) max_rom_comission,
+       sp.sname name
+  FROM (
+           SELECT o.snum seller_num,
+                  o.amt orders_sum
+             FROM orders o,
+                  customers c
+            WHERE o.cnum = c.cnum AND
+                  c.city = 'Rome'
+       ),
+       salespeople sp
+ WHERE sp.snum = seller_num;
+
+7.	Напишите запрос который выведет всех клиентов обслуживаемых продавцом Motiка.
+SELECT ct.cname
+  FROM (
+           SELECT c.cname,
+                  c.snum
+             FROM customers c
+       ) ct,
+       salespeople sp
+ WHERE sp.sname = 'Motika' AND
+       sp.snum = ct.snum;
+
+8.	Напишите запрос, который выведет максимальный рейтинг заказчика для продавцов имеющих комиссионные больше 0,11%.
+SELECT max(c.rating)
+  FROM (
+           SELECT sp.snum
+             FROM salespeople sp
+            WHERE sp.com > 0.11
+       )
+       t1,
+       customers c
+ WHERE t1.snum = c.snum;
