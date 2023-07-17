@@ -1,10 +1,18 @@
-from faker import Faker, providers as fp
+from faker import Faker
 
 from database import create_db, Session
 # импортируем модели
 from customers import Customers
 from salesmen import Salesmen
 from sales import Sales
+
+faker = Faker('ru_RU')
+
+def get_first_last_name():
+    if faker.random.randint(0, 3):
+        return faker.first_name_male(), faker.last_name_male()
+    else:
+        return faker.first_name_female(), faker.last_name_female()
 
 
 def create_database(load_fake_data=True):
@@ -14,25 +22,30 @@ def create_database(load_fake_data=True):
 
 
 def _load_fake_data(session):
-    faker = Faker('ru_RU')
     Faker.seed(0)
 
     # создаем продавцов
     for _ in range(50):
-        salesman_full_name = faker.name().split()
-        customer_full_name = faker.name().split()
-        salesman = Salesmen(salesman_full_name)
-        customer = Customers(customer_full_name)
+        full_name = get_first_last_name()
+        firstname = full_name[0]
+        lastname = full_name[1]
+        salesman = Salesmen(firstname=firstname, lastname=lastname)
         session.add(salesman)
+    session.commit()
+    # создаем клиентов
+    for _ in range(70):
+        full_name = get_first_last_name()
+        firstname = full_name[0]
+        lastname = full_name[1]
+        customer = Customers(firstname=firstname, lastname=lastname)
         session.add(customer)
     session.commit()
-
     # создаем продажи
     for _ in range(150):
-        salesman_id = faker.random.randint(0, 50)
-        customer_id = faker.random.randint(0, 50)
+        salesman_id = faker.random.randint(1, 51)
+        customer_id = faker.random.randint(1, 71)
         date = faker.date_between(start_date="-2y40d", end_date="-90d")
-        summ = faker.random.randint(500, 2500)
+        summ = faker.random.randint(500, 12500)
         sales = Sales(salesman_id=salesman_id, customer_id=customer_id, date=date, summ=summ)
         session.add(sales)
     session.commit()
