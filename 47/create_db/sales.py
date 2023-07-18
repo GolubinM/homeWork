@@ -13,6 +13,6 @@ class Sales(Base):
 
 
     def __repr__(self):
-        return f'Sales(Id: {self.id}, date: {self.date}, summ: {self.summ}'
+        return f'Продажа(Id: {self.id}) от: {self.date}, на сумму: {self.summ}'
         # return f'Sales(Id: {self.id}, date: {self.date}, summ: {self.summ},\
         #         customer_id: {self.customer_id},salesman_id: {self.salesman_id})'

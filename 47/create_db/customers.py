@@ -11,4 +11,4 @@ class Customers(Base):
     sales = relationship('Sales')
 
     def __repr__(self):
-        return f'Customers: {self.surname} {self.name} '
+        return f'Клиент: {self.firstname} {self.lastname}'

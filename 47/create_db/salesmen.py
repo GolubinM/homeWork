@@ -11,4 +11,4 @@ class Salesmen(Base):
     sales = relationship('Sales')
 
     def __repr__(self):
-        return f'Salesman: {self.surname} {self.name} '
+        return f'Продавец: {self.firstname} {self.lastname}'
