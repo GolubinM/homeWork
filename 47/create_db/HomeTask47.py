@@ -1,7 +1,7 @@
 import os
-from sqlalchemy import and_, or_, not_, desc, func, text, select
+from sqlalchemy import and_, or_, not_, desc, func, text, select, update
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base, aliased
+from sqlalchemy.orm import sessionmaker, declarative_base, aliased, relationship
 # from database import Session, Base
 from pprint import pprint
 # engine = create_engine(f'sqlite:///{DATABASE_NAME}')
@@ -57,9 +57,9 @@ Base = declarative_base()
 session = Session()
 
 
-def select_id(model):
+def get_id_record(model):
     while True:
-        selected_id = input("Введите Id записи, по которой будет сформирован отчет(i - показать доступные Id): ")
+        selected_id = input("Введите Id записи, для совершения операции(i - показать доступные Id): ")
         if selected_id == 'i':
             pprint(session.query(model.id, model).all())
         else:
@@ -102,37 +102,49 @@ def min_summ_deals():
     print_result(stmt)
 
 
-def sale_by_salesman():
-    selected_id = select_id(Salesmen)
+def sales_by_salesman(selected_id=None):
+    if selected_id is None:
+        selected_id = get_id_record(Salesmen)
     stmt = select(Sales, Salesmen, Customers).filter(and_(Salesmen.id == Sales.salesman_id,
                                                           Customers.id == Sales.customer_id,
                                                           Salesmen.id == selected_id))
-    print_result(stmt)
+    result = print_result(stmt)
+    return result
+
+
+def sales_by_customer(selected_id=None):
+    if selected_id is None:
+        selected_id = get_id_record(Customers)
+    stmt = select(Sales, Salesmen, Customers).filter(and_(Salesmen.id == Sales.salesman_id,
+                                                          Customers.id == Sales.customer_id,
+                                                          Customers.id == selected_id))
+    result = print_result(stmt)
+    return result
 
 
 def max_sale_by_salesman():
-    selected_id = select_id(Salesmen)
+    selected_id = get_id_record(Salesmen)
     stmt = select(Salesmen.id, Salesmen, func.max(Sales.summ)).join(Salesmen).group_by(Salesmen.id).filter(
         Salesmen.id == selected_id)
     print_result(stmt)
 
 
 def min_sale_by_salesman():
-    selected_id = select_id(Salesmen)
+    selected_id = get_id_record(Salesmen)
     stmt = select(Salesmen.id, Salesmen, func.min(Sales.summ)).join(Salesmen).group_by(Salesmen.id).filter(
         Salesmen.id == selected_id)
     print_result(stmt)
 
 
 def max_sale_by_customers():
-    selected_id = select_id(Customers)
+    selected_id = get_id_record(Customers)
     stmt = select(Customers.id, Customers, func.max(Sales.summ)).join(Customers).group_by(
         Customers.id).filter(Customers.id == selected_id)
     print_result(stmt)
 
 
 def min_sale_by_customers():
-    selected_id = select_id(Customers)
+    selected_id = get_id_record(Customers)
     stmt = select(Customers.id, Customers, func.min(Sales.summ)).join(Customers).group_by(
         Customers.id).filter(Customers.id == selected_id)
     print_result(stmt)
@@ -181,22 +193,80 @@ def customer_with_min_sales():
 
 
 def avg_sale_by_customer():
-    selected_id = select_id(Customers)
+    selected_id = get_id_record(Customers)
     stmt = select(Customers.id, Customers, func.round(func.avg(Sales.summ), 2)).join(Customers).group_by(
         Customers.id).filter(Customers.id == selected_id)
     print_result(stmt)
 
 
 def avg_sale_by_salesman():
-    selected_id = select_id(Salesmen)
+    selected_id = get_id_record(Salesmen)
     stmt = select(Salesmen.id, Salesmen, func.round(func.avg(Sales.summ), 2)).join(Salesmen).group_by(
         Salesmen.id).filter(Salesmen.id == selected_id)
     print_result(stmt)
 
 
+def insert_records():
+    # 1. Добавляем запись с продавцом: таблица salesmen класс Salesmen
+    rec = Salesmen(firstname="Кирилл", lastname="Серов")
+    session.add(rec)
+    print(rec)
+    print(session.new)
+    some_salesman = session.get(Salesmen, 50)
+    print(some_salesman)
+    session.commit()
+
+
+def delete_record(model):
+    rec_id = get_id_record(model)
+    selected_rec = session.get(model, rec_id)
+    if selected_rec:
+        delete_rec = True
+        if model == Customers and sales_by_customer(selected_id=rec_id):
+            print(f"{selected_rec} имеет дочерние записи!!!")
+            if input("Все дочерние записи будут удалены! Нажмите 1 для подтверждения: ") != "1":
+                delete_rec = False
+        elif model == Salesmen and sales_by_salesman(selected_id=rec_id):
+            print(f"{selected_rec} имеет дочерние записи!!!")
+            if input("Все дочерние записи будут удалены! Нажмите 1 для подтверждения: ") != "1":
+                delete_rec = False
+        if delete_rec:
+            try:
+                session.delete(selected_rec)
+                session.commit()
+                print(f"Запись {selected_rec} успешно удалена.")
+                return True
+            except Exception as ex:
+                print(f"Ошибка при попытке удаления записи {selected_rec}.", ex)
+        else:
+            print("Удаление не было произведено.")
+    else:
+        print("Запись с таким Id не найдена. Удаление не было произведено.")
+
+
+def get_table_fields_names(model):
+    fields = [field for field in model.__dict__ if field[0] != "_" and field != "id"]
+    return fields
+
+
+def update_records(model):
+    id_rec = get_id_record(model)
+    record = session.get(model, id_rec)
+    fields = get_table_fields_names(model)
+    print(record._get_info())
+    for en, field in enumerate(fields, 1):
+        print(en, field)
+    selected_field = int(input("Выберете номер поля для редактирования: ")) - 1
+    field_name = fields[selected_field]
+    new_value = input(f"Введите новое значение для поля {field_name}: ")
+    update_query = {"id": id_rec, field_name: new_value}
+    session.execute(update(model), [update_query])
+    session.commit()
+
+
 if __name__ == "__main__":
     # all_deals()
-    sale_by_salesman()
+    # sales_by_salesman()
     # max_summ_deals()
     # min_summ_deals()
     # max_sale_by_salesman()
@@ -209,3 +279,10 @@ if __name__ == "__main__":
     # customer_with_min_sales()
     # avg_sale_by_customer()
     # avg_sale_by_salesman()
+    # insert_records()
+    # delete_record(Sales)
+    # update_records(Sales)
+    # update_records(Salesmen)
+    update_records(Customers)
+    # print(get_table_fields_names(Sales))
+

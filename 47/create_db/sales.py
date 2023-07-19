@@ -10,9 +10,14 @@ class Sales(Base):
     summ = Column(Integer, nullable=False, default=0)
     salesman_id = Column(Integer, ForeignKey('salesmen.id'))
     customer_id = Column(Integer, ForeignKey('customers.id'))
-    sales_man = relationship('Salesmen', back_populates="sales")
+    _salesman = relationship('Salesmen', back_populates="_sales")
+    _customer = relationship('Customers', back_populates="_sales")
 
     def __repr__(self):
         return f'Продажа(Id: {self.id}) от: {self.date}, на сумму: {self.summ}'
         # return f'Sales(Id: {self.id}, date: {self.date}, summ: {self.summ},\
         #         customer_id: {self.customer_id},salesman_id: {self.salesman_id})'
+
+    def _get_info(self):
+        return {'id': self.id, 'date': self.date, 'summ': self.summ, 'salesman_id': self.salesman_id,
+                'customer_id': self.customer_id}
