@@ -8,7 +8,7 @@ class Salesmen(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     lastname = Column(String(100), nullable=False)
     firstname = Column(String(100), nullable=False)
-    sales = relationship('Sales')
+    sales = relationship("Sales", back_populates="sales_man")
 
     def __repr__(self):
         return f'Продавец: {self.firstname} {self.lastname}'

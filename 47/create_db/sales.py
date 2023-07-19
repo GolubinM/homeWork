@@ -10,7 +10,7 @@ class Sales(Base):
     summ = Column(Integer, nullable=False, default=0)
     salesman_id = Column(Integer, ForeignKey('salesmen.id'))
     customer_id = Column(Integer, ForeignKey('customers.id'))
-
+    sales_man = relationship('Salesmen', back_populates="sales")
 
     def __repr__(self):
         return f'Продажа(Id: {self.id}) от: {self.date}, на сумму: {self.summ}'
