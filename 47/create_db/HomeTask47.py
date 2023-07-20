@@ -14,45 +14,6 @@ ECHO = False
 engine = create_engine(f'sqlite:///{DATABASE_NAME}', echo=ECHO)
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
-
-# Создайте трёхтабличную базу данных Sales (продажи).
-# В этой базе данных должны быть следующие таблицы
-# Sales (информация о конкретных продажах), Salesmen
-# (информация о продавцах), Customers (информация о
-# покупателях)
-
-# МЕНЮ
-# ■ Отображение всех сделок;
-# ■ Отображение сделок конкретного продавца;
-# ■ Отображение максимальной по сумме сделки;
-# ■ Отображение минимальной по сумме сделки;
-# ■ Отображение максимальной по сумме сделки для конкретного продавца;
-# ■ Отображение минимальной по сумме сделки для конкретного продавца;
-# ■ Отображение максимальной по сумме сделки для конкретного покупателя;
-# ■ Отображение минимальной по сумме сделки для конкретного покупателя;
-# ■ Отображение продавца, у которого максимальная сумма продаж по всем сделкам;
-# ■ Отображение продавца, у которого минимальная сумма продаж по всем сделкам;
-# ■ Отображение покупателя, у которого максимальная сумма покупок по всем сделкам;
-# ■ Отображение покупателя, у которого минимальная сумма покупок по всем сделкам;
-# ■ Отображение средней суммы покупки для конкретного покупателя;
-# ■ Отображение средней суммы покупки для конкретного продавца.
-
-# план
-# создаем соединение с БД
-# выводим меню
-# Меню содержит следующие основные пункты:
-# Отчеты
-# -перечень всех отчетов по заданию (после вывода отчета предоставить возможность сохранить результат
-# в CSV, имя файла - 'timestamp_имя_отчета.csv')
-# реализация отчетов методами SQLAlchemy
-
-#
-# Работа с данными
-# -Добавление данных
-# -Изменение данных
-# -Удаление данных
-#
-#
 session = Session()
 
 
@@ -71,7 +32,7 @@ def home_task_47():
                 return False
 
     def save_last_report():
-        with open(LAST_REPORT_FILE_NAME, 'a', encoding="utf-8") as f:
+        with open(LAST_REPORT_FILE_NAME, 'w', encoding="utf-8") as f:
             f.writelines(LAST_REPORT_CONTENT[0])
         LAST_REPORT_CONTENT[0] = ""
 
@@ -224,13 +185,10 @@ def home_task_47():
     def delete_record(model):
         rec_id = get_id_record(model)
         selected_rec = session.get(model, rec_id)
+        print(selected_rec)
         try:
             delete_rec = True
-            if model == Customers and sales_by_customer(selected_id=rec_id):
-                print(f"{selected_rec} имеет дочерние записи!!!")
-                if input("Все дочерние записи будут удалены! Нажмите 1 для подтверждения: ") != "1":
-                    delete_rec = False
-            elif model == Salesmen and sales_by_salesman(selected_id=rec_id):
+            if (model == Customers or model == Salesmen) and selected_rec and sales_by_customer(selected_id=rec_id):
                 print(f"{selected_rec} имеет дочерние записи!!!")
                 if input("Все дочерние записи будут удалены! Нажмите 1 для подтверждения: ") != "1":
                     delete_rec = False
@@ -243,7 +201,7 @@ def home_task_47():
                 print("Удаление не было произведено.")
                 return False
         except Exception as ex:
-            print("Удаление не было произведено.", ex)
+            print("Удаление не было произведено.")
             return False
 
     def get_table_fields_names(model):
@@ -283,18 +241,18 @@ def home_task_47():
                    "11 ■ Отображение покупателя, у которого максимальная сумма покупок по всем сделкам;\n" \
                    "12 ■ Отображение покупателя, у которого минимальная сумма покупок по всем сделкам;\n" \
                    "13 ■ Отображение средней суммы покупки для конкретного покупателя;\n" \
-                   "14 ■ Отображение средней суммы покупки для конкретного продавца." \
-                   "0  ■ Вернуться в основное меню;\n"
+                   "14 ■ Отображение средней суммы покупки для конкретного продавца.\n" \
+                   "0  ■ Вернуться в основное меню;"
     menu_changes = "1  ■ Добавление записи;\n" \
                    "2  ■ Обновление записи;\n" \
                    "3  ■ Удаление записи;\n" \
-                   "0  ■ Вернуться в основное меню;\n"
+                   "0  ■ Вернуться в основное меню;"
     menu_main = "1  ■ Отчеты;\n" \
                 "2  ■ Действия с данными(добавить,удалить, обновить);\n" \
                 "3  ■ Сохранить последний отчет в файл;\n" \
-                "q  ■ Выход из программы;\n"
+                "q  ■ Выход из программы;"
 
-    invite = "Выберете номер действия, q - выход из программы:"
+    invite = "Выберете номер действия: "
 
     def reports(menu=menu_reports):
         sel = ""
@@ -335,17 +293,18 @@ def home_task_47():
         while sel != "0":
             print(menu)
             sel = input(invite)
-            model = select_model()
-            if model:
-                if sel == "1":
-                    if model == Sales:
-                        insert_records_sales()
-                    else:
-                        insert_records_salesmen_customers(model)
-                elif sel == "2":
-                    update_records(model)
-                elif sel == "3":
-                    delete_record(model)
+            if sel != "0":
+                model = select_model()
+                if model:
+                    if sel == "1":
+                        if model == Sales:
+                            insert_records_sales()
+                        else:
+                            insert_records_salesmen_customers(model)
+                    elif sel == "2":
+                        update_records(model)
+                    elif sel == "3":
+                        delete_record(model)
 
     sel = ""
     while sel != "q":
@@ -361,26 +320,4 @@ def home_task_47():
 
 
 if __name__ == "__main__":
-    pass
-    # all_deals()
-    # sales_by_salesman()
-    # max_summ_deals()
-    # min_summ_deals()
-    # max_sale_by_salesman()
-    # min_sale_by_salesman()
-    # max_sale_by_customers()
-    # min_sale_by_customers()
-    # salesman_with_max_sales()
-    # salesman_with_min_sales()
-    # customer_with_max_sales()
-    # customer_with_min_sales()
-    # avg_sale_by_customer()
-    # avg_sale_by_salesman()
-    # save_last_report()
-    # insert_records()
-    # delete_record(Sales)
-    # update_records(Sales)
-    # update_records(Salesmen)
-    # update_records(Customers)
-    # print(get_table_fields_names(Sales))
     home_task_47()
