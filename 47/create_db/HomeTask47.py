@@ -17,7 +17,7 @@ Base = declarative_base()
 session = Session()
 
 
-def home_task_47():
+def sales_db():
     def select_model():
         print("1. Sales\n2. Salesmen\n3. Customers")
         sel = input("Выберете таблицу, 0 - отмена: ")
@@ -320,4 +320,4 @@ def home_task_47():
 
 
 if __name__ == "__main__":
-    home_task_47()
+    sales_db()
