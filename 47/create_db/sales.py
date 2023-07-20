@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, CheckConstraint
 from database import Base
 from sqlalchemy.orm import relationship
 
@@ -6,10 +6,12 @@ from sqlalchemy.orm import relationship
 class Sales(Base):
     __tablename__ = 'sales'
     id = Column(Integer, primary_key=True)
-    date = Column(String(10), nullable=False)
-    summ = Column(Integer, nullable=False, default=0)
-    salesman_id = Column(Integer, ForeignKey('salesmen.id'))
-    customer_id = Column(Integer, ForeignKey('customers.id'))
+    date = Column(String(10), CheckConstraint('date is not Null AND date !=""'), nullable=False)
+    summ = Column(Integer, CheckConstraint('summ > 0'), nullable=False, default=0)
+    salesman_id = Column(Integer, CheckConstraint('salesman_id is not Null AND salesman_id !=""'),
+                         ForeignKey('salesmen.id'))
+    customer_id = Column(Integer, CheckConstraint('customer_id is not Null AND customer_id !=""'),
+                         ForeignKey('customers.id'))
     _salesman = relationship('Salesmen', back_populates="_sales")
     _customer = relationship('Customers', back_populates="_sales")
 

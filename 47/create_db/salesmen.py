@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, CheckConstraint
 from database import Base
 from sqlalchemy.orm import relationship
 
@@ -6,8 +6,8 @@ from sqlalchemy.orm import relationship
 class Salesmen(Base):
     __tablename__ = 'salesmen'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    firstname = Column(String(100), nullable=False)
-    lastname = Column(String(100), nullable=False)
+    firstname = Column(String(100), CheckConstraint('firstname is not Null AND firstname !=""'), nullable=False)
+    lastname = Column(String(100), CheckConstraint('lastname is not Null AND lastname !=""'), nullable=False)
     _sales = relationship("Sales", cascade="all, delete, delete-orphan", back_populates="_salesman")
 
     def __repr__(self):
