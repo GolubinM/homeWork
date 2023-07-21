@@ -1,6 +1,14 @@
 from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
+
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
 
 # task 1
+print( "*" * 50)
+print("task 1")
+print("*" * 50)
+
 users_l = [
     {'name': 'Иван', 'email': '2020@ya.ru'}, {'name': 'Данила', 'email': '2021@gmail.com'},
     {'name': 'Лука', 'email': '2022@gmail.com'}, {'name': 'Сергей', 'email': '2023@mail.ru'},
@@ -24,13 +32,17 @@ msg = tm.render(users=users_l)
 print(msg)
 
 # task 2
+print("\n" * 2, "*" * 50, sep="")
+print("task 2")
+print("*" * 50)
+
 products = [
     {'name': 'Огурцы', 'price': 17}, {'name': 'Томаты', 'price': 19},
     {'name': 'Лук зеленый', 'price': 8}, {'name': 'Чеснок', 'price': 20},
     {'name': 'Дуриан', 'price': 2000}]
 
 html = """
-{%- macro list_users(products) -%}
+{%- macro foods(products) -%}
 {%- for product in products|sort(attribute='price') %}
         <p>
         {%- if product.price < 10 -%}
@@ -44,11 +56,19 @@ html = """
 {%- endfor -%}
     
 {%- endmacro -%}
-{%- call(prod) list_users(products) -%}
+{%- call(prod) foods(products) -%}
 Продукт: {{ prod.name }}
 {%- endcall -%}
 """
 
 tm = Template(html)
 msg = tm.render(products=products)
+print(msg)
+
+print("\n" * 2, "*" * 50, sep="")
+print("render with import -> HTML")
+print("*" * 50)
+
+tm = env.get_template('task1.html')
+msg = tm.render(users_l=users_l, products=products)
 print(msg)
