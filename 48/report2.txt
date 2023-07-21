@@ -1,0 +1,15 @@
+C:\Lesson\Git\homeWorks\48\part2\HomeTask48_2.py
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашнее задание</title>
+</head>
+<body>
+    <h1>Страница с домашним заданием</h1>
+    <p>Домашнее задание выполнено!!!</p>
+</body>
+</html>
+
+
+Process finished with exit code 0
