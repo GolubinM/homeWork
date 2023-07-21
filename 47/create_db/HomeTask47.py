@@ -34,7 +34,6 @@ def sales_db():
     def save_last_report():
         with open(LAST_REPORT_FILE_NAME, 'w', encoding="utf-8") as f:
             f.writelines(LAST_REPORT_CONTENT[0])
-        LAST_REPORT_CONTENT[0] = ""
 
     def get_id_record(model):
         while True:
