@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Ближайшие рейсы:</h1>
+{{ super() }}
+{% for fl in flight: %}
+<li class="tickets">
+    <h4>Дата отбытия: {{fl.flight_date}}</h4>
+    <h4>Свободных мест: {{fl.free_places}}</h4>
+{% if fl.ticket_price: %}
+    <h4>Класс каюты: {{fl.ticket_class}}</h4>
+    <h4>Цена на билет: {{fl.ticket_price}}</h4>
+{% else: %}
+<h4>Билеты в подарок!</h4>
+</li>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

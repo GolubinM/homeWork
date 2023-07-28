@@ -1,0 +1,93 @@
+h1,
+h3 {
+  padding: 10px 10px;
+  margin: 0;
+  background-color: #cfe9f8;
+  text-shadow: 1px 1px 2px #afadad;
+}
+h1 {
+  padding-top: 20px;
+}
+h3 {
+  text-shadow: none;
+}
+h4 {
+  padding-left: 15px;
+}
+.li {
+  padding: auto;
+}
+body {
+  background: #e0fffd;
+  padding: 20px 10px;
+  margin: 5px;
+  width: 95%;
+}
+.multi-linear {
+  background: repeating-linear-gradient(
+      10deg,
+      rgba(114, 143, 167, 0.05) 30px,
+      rgba(218, 225, 227, 0.05) 250px,
+      rgba(146, 157, 182, 0.05) 15px,
+      rgba(138, 111, 148, 0.05) 120px,
+      rgba(124, 113, 128, 0.05) 120px
+    ),
+    repeating-linear-gradient(
+      -190deg,
+      rgba(143, 149, 151, 0.01) 20px,
+      rgba(126, 150, 159, 0.05) 20px,
+      rgba(203, 216, 221, 0.05) 240px,
+      rgba(115, 116, 94, 0.05) 240px,
+      rgba(147, 150, 151, 0.01) 30px
+    ),repeating-linear-gradient(
+      -1950deg,
+      rgba(143, 149, 151, 0.01) 20px,
+      rgba(126, 150, 159, 0.05) 20px,
+      rgba(203, 216, 221, 0.05) 240px,
+      rgba(115, 116, 94, 0.05) 240px,
+      rgba(147, 150, 151, 0.01) 30px
+    );
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  background: #bee2f5;
+  margin: 0px;
+  padding: 20px 5px;
+}
+
+.container {
+  max-width: 1800px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+}
+
+.flash.success {
+  border: 1px solid #a0f9ff;
+  background: #bbc8d1;
+}
+
+.flash.error {
+  border: 1px solid #eb958d;
+  background: #e4c7c7;
+}
+
+.footer {
+  font-size: 8px;
+  padding-top: 80px;
+}
+
+.tickets {
+  display: flex;
+  /* justify-content: space-around; */
+  justify-items: auto;
+  background: #f4fbe7;
+  margin: 15px;
+  padding: 20px 10px;
+}
+.title{
+  background: #f4fbe7;
+}

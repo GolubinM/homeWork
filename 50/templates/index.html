@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Главная страница</h1>
+{{ super() }}
+<h3>Содержимое главной страницы</h3>
+<p>Международная компания развития миров приглашает к сотрудничеству</p>
+
+<h2>Ближайшие задачи</h2>
+<ul>
+    {% for project in projects %}
+    <li>
+        <p class="title">
+            <a href="/project/{{ project.url }}">{{ project.project}}</a>
+        </p>
+        <div class="announce">{{ project.text[:240] }}</div>
+    </li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

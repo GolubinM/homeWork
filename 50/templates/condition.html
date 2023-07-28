@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Условия для участие в компании 'Освоение Нового мира'</h1>
+{{ super() }}
+
+{% for elm in conditions: %}
+<li>{{elm}}</li>
+{% endfor %}
+
+{% endblock %}

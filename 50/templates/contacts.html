@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+<h3>Наша фирма имеет отличную репутацию надежного партнера</h3>
+<h3>Сотни компаний по всему миру участвую в разработке проекта 'Освоение'</h3>
+<h3>Тысячи лучших ученых сделали мечту реальностью</h3>
+
+<h3>Станьте частью нашей дружной компании</h3>
+<p>Расскажите немного о себе:</p>
+
+<form method="post" class="form-contacts">
+    <p>*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
+    <p>Имя: <input type="text" name="username" required></p>
+    <p>Фамилия: <input type="text" name="lastname" required></p>
+    <p>Возраст: <input type="text" name="age" required></p>
+    <p>Профессия: <input type="text" name="age" required></p>
+    <p>*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
+    <p>Email: <input type="email" name="email" required></p>
+    <p>*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
+
+    <p><textarea name="message" cols="30" rows="10"></textarea></p>
+    <p><input type="submit" value="Отправить"></p>
+    <p>*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
+</form>
+
+{% endblock %}
