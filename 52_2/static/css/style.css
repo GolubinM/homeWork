@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.center, .content{
+    text-align: center;
+}
+.block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+.block div{
+    flex-basis: 24%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.text {
+    text-align: left;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.head{
+    background: silver;
+    font-size: 20px;
+}
+.input{
+    width: 98%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.input_content{
+    width: 300px;
+    margin: 5px;
+}
+
+.old_content{
+ color: cadetblue;  
+ padding: 0px 10px 20px;
+}
+.message{
+    text-shadow: 1px 1px 1px;
+    color: rgb(48, 61, 61);      
+    padding: 10px;
+}

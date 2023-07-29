@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1>Постановщик задач.</h1>
+{% endblock %}
+
+{% block content %}
+<h2>Обновление Задачи.</h2>
+<div class="form">
+    <form action="/update/{{ task.id }}" method="post">
+        <div class="message">Предыдущее содержание задачи</div>
+        <div class="old_content">{{ task.content | striptags }}</div>
+        <div style="margin-left: 10px">Введите обновленное содержание задачи</div>
+        <input style="margin-left: 10px" class="input_content" type="text" name="content" value="{{task.content}}">
+        <input type="submit" value="Обновить задачу">
+    </form>
+</div>
+
+{% endblock %}
